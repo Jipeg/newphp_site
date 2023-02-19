@@ -30,6 +30,43 @@ require 'blocks/head.php';
                 <?=$article->text?>
             </p>
           </div>
+
+          <h4>Добавить комментарий</h4>
+          <form method="post" action="articles.php?id=<?=$article->id?>">
+            <label for="username">Ваше имя</label>
+            <input type="text" name="username" id="username" class="form-control">
+ 
+            <label for="mess">Текст комментария</label>
+            <textarea name="mess" id="mess" class="form-control"></textarea>
+
+            <button type="submit" id="addComment" class="btn btn-success mt-3 mb-5">Добавить комментарий</button>
+          </form>
+
+          <?php
+            if ($_POST['username'] != '' && $_POST['mess'] != ''){
+              $username = trim(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
+              $mess = trim(filter_var($_POST['mess'], FILTER_SANITIZE_STRING));
+
+              $sql = 'INSERT INTO newphp_site_comments(username, mess, article_id) VALUES (?,?,?)';
+              $query = $pdo->prepare($sql);
+              $query->execute([$username, $mess, $_GET['id']]);
+            }
+
+            $sql = 'SELECT * FROM newphp_site_comments WHERE `article_id` = :id ORDER BY `id` DESC';
+            $query = $pdo->prepare($sql);
+            $query->execute(['id' => $_GET['id']]);
+            //echo "qweqweqweqwe";
+            $comments = $query->fetchAll(PDO::FETCH_OBJ);
+            foreach ($comments as $comment) {
+              echo "<div class='alert alert-info'>
+                <h4 class='mb-3'>$comment->username</h4>
+                <p>$comment->mess</p>
+              </div>";
+            }
+          ?>
+
+
+          
       </div>
       <?php require 'blocks/aside.php'; ?>
   </div>
