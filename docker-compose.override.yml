@@ -1,0 +1,22 @@
+version: '3.7'
+
+services:
+  phpmyadmin:
+    image: phpmyadmin
+    restart: always
+    environment:
+      - PMA_ARBITRARY=1
+      - PMA_HOST=db
+      - PMA_USER=f0767272
+      - PMA_PASSWORD=imuwukbema
+    ports:
+      - '1338:80'
+    networks:
+      - newphp
+
+networks:
+  newphp:
+    driver: bridge
+
+volumes:
+  database:
