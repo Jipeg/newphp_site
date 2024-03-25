@@ -12,7 +12,7 @@ require 'blocks/head.php';
   <div class="row">
       <div class="col-md-8 mb-5">
         <?php 
-        if($_COOKIE['log'] == ''):
+        if($_COOKIE['log'] ?? '' == ''):
         ?>
           <h4>Авторизация</h4>
           <form>
