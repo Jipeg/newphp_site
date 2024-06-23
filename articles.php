@@ -5,7 +5,7 @@
 setlocale(LC_TIME, 'ru_RU', 'russian');
 
 require_once 'db/db1.php';
-$sql = 'SELECT * from newphp_site_articles WHERE `id` =:id';
+$sql = 'SELECT * from articles WHERE `id` =:id';
 $query = $pdo->prepare($sql);
 $id = $_GET['id'];
 $query->execute(['id' => $id]);
@@ -47,12 +47,12 @@ require 'blocks/head.php';
               $username = trim(filter_var($_POST['username'], FILTER_SANITIZE_STRING));
               $mess = trim(filter_var($_POST['mess'], FILTER_SANITIZE_STRING));
 
-              $sql = 'INSERT INTO newphp_site_comments(username, mess, article_id) VALUES (?,?,?)';
+              $sql = 'INSERT INTO comments(username, mess, article_id) VALUES (?,?,?)';
               $query = $pdo->prepare($sql);
               $query->execute([$username, $mess, $_GET['id']]);
             }
 
-            $sql = 'SELECT * FROM newphp_site_comments WHERE `article_id` = :id ORDER BY `id` DESC';
+            $sql = 'SELECT * FROM comments WHERE `article_id` = :id ORDER BY `id` DESC';
             $query = $pdo->prepare($sql);
             $query->execute(['id' => $_GET['id']]);
             //echo "qweqweqweqwe";

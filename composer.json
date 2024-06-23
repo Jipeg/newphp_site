@@ -1,0 +1,9 @@
+{
+    "name": "root/www",
+    "require": {
+        "illuminate/database": "^11.11",
+        "illuminate/events": "^11.11",
+        "illuminate/support": "^11.11",
+        "vlucas/phpdotenv": "^5.6"
+    }
+}

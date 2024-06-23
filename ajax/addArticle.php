@@ -19,7 +19,7 @@
 
     // echo $pass;
     require_once '../db/db1.php';
-    $sql = 'INSERT INTO newphp_site_articles(title, intro, text, date, author) VALUES (?,?,?,?,?)';
+    $sql = 'INSERT INTO articles(title, intro, text, date, author) VALUES (?,?,?,?,?)';
     $query = $pdo->prepare($sql);
     $query->execute([$title, $intro, $text, time(), $_COOKIE['log']]);
 

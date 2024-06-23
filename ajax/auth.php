@@ -18,7 +18,7 @@
     $pass = md5($pass . $hash);
 
     require_once '../db/db1.php';
-    $sql = 'SELECT `id` FROM `newphp_site_users` WHERE `login` = :login && `pass` = :pass';
+    $sql = 'SELECT `id` FROM `users` WHERE `login` = :login && `pass` = :pass';
     $query = $pdo->prepare($sql);
     $query->execute(['login' => $login,'pass' => $pass]);
 

@@ -13,7 +13,7 @@ require 'blocks/head.php';
       <div class="col-md-8 mb-5">
           <?php
             require_once 'db/db1.php';
-            $sql = 'SELECT * from newphp_site_articles ORDER BY `date` DESC';
+            $sql = 'SELECT * from articles ORDER BY `date` DESC';
             $query = $pdo->query($sql);
             while($row = $query->fetch(PDO::FETCH_OBJ)) {
               echo "<h2 >$row->title</h2>

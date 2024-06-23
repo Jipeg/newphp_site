@@ -25,7 +25,7 @@
 
     // echo $pass;
     require_once '../db/db1.php';
-    $sql = 'INSERT INTO newphp_site_users(name, email, login, pass) VALUES (?,?,?,?)';
+    $sql = 'INSERT INTO users(name, email, login, pass) VALUES (?,?,?,?)';
     $query = $pdo->prepare($sql);
     $query->execute([$username, $email, $login, $pass]);
 

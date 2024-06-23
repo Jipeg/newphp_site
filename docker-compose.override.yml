@@ -1,14 +1,14 @@
-version: '3.7'
-
 services:
   phpmyadmin:
     image: phpmyadmin
-    restart: always
+    restart: unless-stopped
+    env_file: .env
     environment:
       - PMA_ARBITRARY=1
       - PMA_HOST=db
-      - PMA_USER=f0767272
-      - PMA_PASSWORD=imuwukbema
+      - PMA_USER=${DB_USER}
+      - PMA_PASSWORD=${DB_PASS}
+      - UPLOAD_LIMIT=999999999
     ports:
       - '1338:80'
     networks:
