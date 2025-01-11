@@ -33,7 +33,7 @@ services:
       MYSQL_USER: ${DB_USER}
     volumes:
       - database:/var/lib/mysql
-      # - ./db/db1.sql:/docker-entrypoint-initdb.d/db1.sql
+      - ./db/db1.sql:/docker-entrypoint-initdb.d/db1.sql
       # - ./db/inoa.sql:/docker-entrypoint-initdb.d/inoa.sql
     networks:
       - newphp
